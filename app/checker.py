@@ -1,19 +1,25 @@
 import re
 
+
 def has_uppercase(password: str) -> bool:
     return any(char.isupper() for char in password)
+
 
 def has_lowercase(password: str) -> bool:
     return any(char.islower() for char in password)
 
+
 def has_number(password: str) -> bool:
     return any(char.isdigit() for char in password)
+
 
 def has_special(password: str) -> bool:
     return bool(re.search(r"[!@#$%^&*(),.?\":{}|<>]", password))
 
+
 def is_long_enough(password: str, min_length: int) -> bool:
     return len(password) >= min_length
+
 
 def evaluate_password(password: str, min_length: int = 8) -> dict:
     score = 0
@@ -52,8 +58,4 @@ def evaluate_password(password: str, min_length: int = 8) -> dict:
     else:
         strength = "Strong"
 
-    return {
-        "score": score,
-        "strength": strength,
-        "suggestions": suggestions
-    }
+    return {"score": score, "strength": strength, "suggestions": suggestions}

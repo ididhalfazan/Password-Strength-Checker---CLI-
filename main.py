@@ -21,6 +21,7 @@ Environment Variables:
 Security Note:
     The application never logs the actual password.
 """
+
 import argparse
 import logging
 import os
@@ -39,7 +40,7 @@ LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 logging.basicConfig(
     level=LOG_LEVEL,
     filename="app.log",
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
 
@@ -65,11 +66,7 @@ def main():
         None
     """
     parser = argparse.ArgumentParser(description="Password Strength Checker CLI")
-    parser.add_argument(
-        "--password",
-        type=str,
-        help="Password to evaluate"
-    )
+    parser.add_argument("--password", type=str, help="Password to evaluate")
 
     args = parser.parse_args()
 
@@ -91,7 +88,9 @@ def main():
             print(f"- {suggestion}")
 
     # Log evaluation (never log actual password)
-    logging.info(f"Password evaluated | Score: {result['score']} | Strength: {result['strength']}")
+    logging.info(
+        f"Password evaluated | Score: {result['score']} | Strength: {result['strength']}"
+    )
 
 
 if __name__ == "__main__":

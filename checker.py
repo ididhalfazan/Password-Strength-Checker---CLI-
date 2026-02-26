@@ -56,9 +56,7 @@ def evaluate_password(password: str, min_length: int = 8) -> dict:
     if is_long_enough(password, min_length):
         score += 1
     else:
-        suggestions.append(
-            f"Password should be at least {min_length} characters long."
-        )
+        suggestions.append(f"Password should be at least {min_length} characters long.")
 
     if has_uppercase(password):
         score += 1
@@ -88,8 +86,4 @@ def evaluate_password(password: str, min_length: int = 8) -> dict:
     else:
         strength = "Strong"
 
-    return {
-        "score": score,
-        "strength": strength,
-        "suggestions": suggestions
-    }
+    return {"score": score, "strength": strength, "suggestions": suggestions}
